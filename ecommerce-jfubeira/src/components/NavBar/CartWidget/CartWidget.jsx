@@ -2,7 +2,9 @@ import React from 'react'
 
 const CartWidget = () => {
     return (
-        <div>CartWidget</div>
+        <li>
+            5 CartWidget
+        </li>
     )
 }
 

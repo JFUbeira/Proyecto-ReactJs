@@ -1,4 +1,5 @@
 import CartWidget from "./CartWidget/CartWidget"
+import './NavBar.css'
 
 const Navbar = () => {
     return (
@@ -33,7 +34,7 @@ const Navbar = () => {
                     <a className="nav-link mx-2" href="#!"><i className="fas fa-heart pe-2"></i>LOCALES</a>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link mx-2" href="#!"><i className="fas fa-heart pe-2"></i><CartWidget /></a>
+                    <a className="nav-link mx-2" href="#!"><CartWidget /></a>
                     </li>
                 </ul>
                 </div>

@@ -7,6 +7,7 @@ import Navbar from './components/NavBar/NavBar'
 import './App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,19 +16,8 @@ function App() {
     <>
       <div>
         <Navbar />
+        <ItemListContainer greeting={'Hola!'} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
