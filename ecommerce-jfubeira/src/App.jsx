@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Navbar from './components/NavBar/NavBar'
@@ -9,6 +7,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import './App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -18,8 +17,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path='/' element={<ItemListContainer greeting={'Hola!'} />} />
-          <Route path='/detail' element={<ItemDetailContainer />} />
+          <Route path='/' element={<ItemListContainer />} />
+          <Route path='/detail' element={<ItemDetailContainer/>} />
         </Routes>
       </BrowserRouter>
     </>

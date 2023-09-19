@@ -1,6 +1,6 @@
 import React from 'react'
 import './CartWidget.css'
-import img from '../../../../images/cart-icon1.png'
+import img from "../../../images/cart-icon1.png"
 
 const CartWidget = () => {
     return (
