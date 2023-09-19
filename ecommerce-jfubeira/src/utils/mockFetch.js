@@ -7,8 +7,11 @@ const products = [
 ]
 
 export const mFetch  = (pid) =>  new Promise((res,rej) => {
-        setTimeout(()=>{
-            res(pid  ? products.find(product => product.id === pid) : products)
-        }, 1000)
-
+        if(pid){
+            setTimeout(()=>{
+                res(pid  ? products.find(product => product.id === pid) : products)
+            }, 1000)
+        }else{
+            
+        }
 })
