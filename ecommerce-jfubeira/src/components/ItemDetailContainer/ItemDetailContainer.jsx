@@ -10,7 +10,7 @@ const ItemDetailContainer = () => {
     console.log(pid)
 
     useEffect(() => {
-        mFetch(4)
+        mFetch(Number(pid))
         .then(resp => setProduct(resp))
         .catch(err => console.log(err))
         }, [])
