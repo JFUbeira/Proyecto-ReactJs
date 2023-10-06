@@ -10,6 +10,7 @@ import CartContainer from './components/CartContainer/CartContainer'
 import './App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CartContext } from './context/CartContext'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -17,13 +18,15 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<ItemListContainer />} />
-          <Route path='/category/:cid' element={<ItemListContainer />} />
-          <Route path='/detail/:pid' element={<ItemDetailContainer/>} />
-          <Route path='/cart' element={<CartContainer/>} />
-        </Routes>
+        <CartContext.Provider value={{}}>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<ItemListContainer />} />
+            <Route path='/category/:cid' element={<ItemListContainer />} />
+            <Route path='/detail/:pid' element={<ItemDetailContainer/>} />
+            <Route path='/cart' element={<CartContainer/>} />
+          </Routes>
+        </CartContext.Provider>
       </BrowserRouter>
     </>
   )
