@@ -8,7 +8,7 @@ const ItemListContainer = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(()=>{ 
-        mFetch(1)
+        mFetch()
         .then(resp => setProduct(resp))
         .catch(err => console.log(err))
         .finally(()=> setLoading(false))
@@ -30,4 +30,3 @@ const ItemListContainer = () => {
 export default ItemListContainer
 
 
-  

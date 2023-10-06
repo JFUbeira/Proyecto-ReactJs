@@ -1,19 +1,31 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { mFetch } from '../../utils/mockFetch'
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState(null)
+    const [product, setProduct] = useState({})
+    const { pid } = useParams()
+    console.log(pid)
 
     useEffect(() => {
-        mFetch(1)
-        .then((resp) => console.log(resp))
-        .catch((err) => console.log(err))
+        mFetch(4)
+        .then(resp => setProduct(resp))
+        .catch(err => console.log(err))
         }, [])
+
+        if (product) {
+            // El código dentro de este bloque se ejecutará si product existe y es verdadero
+            console.log('product existe y es verdadero:', product);
+        } else {
+            // El código dentro de este bloque se ejecutará si product no existe o es falso
+            console.log('product no existe o es falso');
+        }      
 
     return (
         <div>
-            {product ? <ItemDetail product={product} /> : 'Cargando producto...'}
+            <ItemDetail product={product} /> 
         </div>
         )
 }
