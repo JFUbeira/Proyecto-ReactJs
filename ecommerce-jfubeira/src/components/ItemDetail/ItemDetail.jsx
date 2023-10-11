@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
-import { CartContext } from '../../context/CartContext';
+// import React, { useContext } from 'react'
+// import { CartContext } from '../../context/CartContext';
+import { useCartContext } from '../../context/CartContext';
 
 import ItemCount from '../Counter/ItemCount'
 
 const ItemDetail = ({ product }) => {
-    const {addProduct, cartItems} = useContext(CartContext)
+    const {addProduct, cartItems} = useCartContext(CartContext)
 
     if (!product) {
         return <div>Cargando producto...</div>;

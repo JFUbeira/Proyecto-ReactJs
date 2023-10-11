@@ -19,8 +19,9 @@ const Navbar = () => {
         <div className="container d-flex justify-content-center">
             <div className="row">
             <div className="col-12 d-flex justify-content-center mb-3">
-                <a className="navbar-brand" href="#"
-                >ODESSA</a>
+                <NavLink to='/'>
+                <div className="navbar-brand" href="#">ODESSA</div>
+                </NavLink>
             </div>
             <div className="col-12 d-flex justify-content-center">
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">

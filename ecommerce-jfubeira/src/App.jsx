@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { CartContext, CartContextProvider } from './context/CartContext'
+import { CartContextProvider } from './context/CartContext'
 
 import Navbar from './components/NavBar/NavBar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
