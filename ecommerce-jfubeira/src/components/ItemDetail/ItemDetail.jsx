@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../../context/CartContext';
+
 import ItemCount from '../Counter/ItemCount'
 
 const ItemDetail = ({ product }) => {
+    const {addProduct, cartItems} = useContext(CartContext)
+
     if (!product) {
         return <div>Cargando producto...</div>;
     }
 
-    console.log('Prop product en ItemDetail:', product);
+    const onAdd = (count)=>{
+        addProduct({...product, quantity: count})
+    }
+
+    console.log(cartItems)
 
     return(
         <div className="card w-100">
@@ -21,7 +29,7 @@ const ItemDetail = ({ product }) => {
                 </div>
             </div>
             <div className="col">
-                <ItemCount initial={0} stock={product.stock} />
+                <ItemCount initial={1} stock={product.stock} onAdd={onAdd}/>
             </div>
         </div>
     )

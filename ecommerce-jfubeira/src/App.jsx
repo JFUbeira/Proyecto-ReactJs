@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { CartContext, CartContextProvider } from './context/CartContext'
 
 import Navbar from './components/NavBar/NavBar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
@@ -10,15 +11,13 @@ import CartContainer from './components/CartContainer/CartContainer'
 import './App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CartContext } from './context/CartContext'
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
     <>
       <BrowserRouter>
-        <CartContext.Provider value={{}}>
+        <CartContextProvider value={{}}>
           <Navbar />
           <Routes>
             <Route path='/' element={<ItemListContainer />} />
@@ -26,7 +25,7 @@ function App() {
             <Route path='/detail/:pid' element={<ItemDetailContainer/>} />
             <Route path='/cart' element={<CartContainer/>} />
           </Routes>
-        </CartContext.Provider>
+        </CartContextProvider>
       </BrowserRouter>
     </>
   )
