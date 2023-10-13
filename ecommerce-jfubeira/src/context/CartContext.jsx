@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from "react";
 
-export const CartContext = createContext([])
+export const CartContext = createContext([]);
 
-export const useCartContext = () => useContext(CartContext)
+export const useCartContext = () => useContext(CartContext);
 
-export const CartContextProvider = ({children}) => {
-    const [cartItems, setCartItems] = useState ([])
+export const CartContextProvider = ({ children }) => {
+    const [cartItems, setCartItems] = useState([]);
 
     // const addProduct = (newProduct)=>{
     //     setCartItems([
@@ -16,29 +16,31 @@ export const CartContextProvider = ({children}) => {
 
     const addProduct = (newProduct) => {
         // Verificar si el producto ya está en el carrito
-        const existingProduct = cartItems.find((item) => item.id === newProduct.id)
+        const existingProduct = cartItems.find(
+            (item) => item.id === newProduct.id
+        );
         if (existingProduct) {
-          // El producto ya está en el carrito, aumenta la cantidad
+            // El producto ya está en el carrito, aumenta la cantidad
             const updatedCartItems = cartItems.map((item) => {
-            if (item.id === existingProduct.id) {
-                return {
-                ...item,
-                quantity: item.quantity + newProduct.quantity,
-                };
-            }
-            return item;
+                if (item.id === existingProduct.id) {
+                    return {
+                        ...item,
+                        quantity: item.quantity + newProduct.quantity,
+                    };
+                }
+                return item;
             });
 
             setCartItems(updatedCartItems);
         } else {
-          // El producto no está en el carrito, agrégalo
+            // El producto no está en el carrito, agrégalo
             setCartItems([...cartItems, newProduct]);
-            }
         }
+    };
 
     const clearCartItems = () => {
-        setCartItems([])
-    }
+        setCartItems([]);
+    };
 
     // const deleteItem = (existingItem) => {
     //     const itemToDelete = cartItems.findIndex((item) => item.id === existingItem.id)
@@ -47,20 +49,22 @@ export const CartContextProvider = ({children}) => {
     // }
 
     const deleteItem = (productToDelete) => {
-        const updatedCartItems = cartItems.filter((item) => item.id !== productToDelete.id);
+        const updatedCartItems = cartItems.filter(
+            (item) => item.id !== productToDelete.id
+        );
         setCartItems(updatedCartItems);
-    }
-    
+    };
 
     return (
-        <CartContext.Provider value={{
-            cartItems,
-            addProduct,
-            clearCartItems,
-            deleteItem
-        }}>
+        <CartContext.Provider
+            value={{
+                cartItems,
+                addProduct,
+                clearCartItems,
+                deleteItem,
+            }}
+        >
             {children}
         </CartContext.Provider>
-    )
-}
-
+    );
+};

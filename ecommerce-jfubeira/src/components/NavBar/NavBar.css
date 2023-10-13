@@ -1,15 +1,15 @@
 @font-face {
-    font-family: 'logo';
-    src: url('../../../fonts/OPTIBodoni-Antiqua.otf');
+    font-family: "logo";
+    src: url("../../../fonts/OPTIBodoni-Antiqua.otf");
 }
 
 .navbar-light .navbar-nav .nav-link {
     color: #000;
 }
 
-.navbar-brand{
+.navbar-brand {
     font-size: 32.5px !important;
     letter-spacing: 9px;
     font-weight: 600;
-    font-family: 'logo';
+    font-family: "logo";
 }

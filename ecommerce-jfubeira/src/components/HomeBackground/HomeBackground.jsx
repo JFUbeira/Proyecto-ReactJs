@@ -1,17 +1,16 @@
-import React from 'react'
-import './HomeBackground.css'
+import s from "./HomeBackground.module.css";
 
 const HomeBackground = () => {
     return (
-        <div className='backgroundContainer'>
-            <div className='img1'>
-                <div className='verano'>COLECCIÓN VERANO</div>
+        <div className={s.backgroundContainer}>
+            <div className={s.img1}>
+                <div className={s.verano}>COLECCIÓN VERANO</div>
             </div>
-            <div className='img2'>
-                <div className='invierno'>COLECCIÓN INVIERNO</div>
+            <div className={s.img2}>
+                <div className={s.invierno}>COLECCIÓN INVIERNO</div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default HomeBackground
+export default HomeBackground;

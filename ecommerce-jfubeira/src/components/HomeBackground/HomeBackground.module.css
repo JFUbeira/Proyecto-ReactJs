@@ -1,4 +1,4 @@
-.backgroundContainer{
+.backgroundContainer {
     height: 90vh;
     width: 100vw;
     background-color: white;
@@ -9,7 +9,7 @@
     transform-style: preserve-3d;
 }
 
-.img1{
+.img1 {
     height: 90vh;
     /* background-color: aqua; */
     width: 50vw;
@@ -20,14 +20,13 @@
     transform-style: preserve-3d;
 }
 
-.img1::before{
+.img1::before {
     background-image: url(../../../images/hb1.jpeg);
     transform: translateZ(-1px) scale(2.2);
     filter: blur(2px);
-
 }
 
-.img2{
+.img2 {
     height: 90vh;
     background-color: aquamarine;
     width: 100vh;
@@ -39,13 +38,15 @@
     transform-style: preserve-3d;
 }
 
-.verano, .invierno{
+.verano,
+.invierno {
     top: 30%;
     left: 50%;
     position: absolute;
     font-family: Helvetica, sans-serif;
     font-size: 30px;
     color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), 5px 5px 70px rgba(255,255,255,0.5);
-    transform: scale(1,1.1) translate(-50%, 10%);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3),
+        5px 5px 70px rgba(255, 255, 255, 0.5);
+    transform: scale(1, 1.1) translate(-50%, 10%);
 }
