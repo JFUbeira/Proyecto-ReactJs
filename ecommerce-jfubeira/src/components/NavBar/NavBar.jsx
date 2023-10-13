@@ -28,16 +28,16 @@ const Navbar = () => {
                 <ul className="navbar-nav align-items-center mx-auto">
                     <li className="nav-item">
                         <NavLink to='/category/invierno'>
-                            <div className="nav-link mx-2"><i className="fas fa-plus-circle pe-2"></i>INVIERNO</div>
+                            <div className="nav-link mx-2">INVIERNO</div>
                         </NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink to='/category/verano'>
-                            <div className="nav-link mx-2"><i className="fas fa-plus-circle pe-2"></i>VERANO</div>
+                            <div className="nav-link mx-2">VERANO</div>
                         </NavLink>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link mx-2" href="#!"><i className="fas fa-heart pe-2"></i>LOCALES</a>
+                        <div className="nav-link mx-2">LOCALES</div>
                     </li>
                     <li className="nav-item">
                         <NavLink to='/cart'>

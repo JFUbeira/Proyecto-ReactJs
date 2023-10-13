@@ -5,11 +5,10 @@ const HomeBackground = () => {
     return (
         <div className='backgroundContainer'>
             <div className='img1'>
-                <img src="C:\Users\Fran\Desktop\CODER\react js\ecommerce-jfubeira\images
-C:\Users\Fran\Desktop\CODER\react js\ecommerce-jfubeira\images\hb2.jpeg"></img>
+                <div className='verano'>COLECCIÓN VERANO</div>
             </div>
             <div className='img2'>
-
+                <div className='invierno'>COLECCIÓN INVIERNO</div>
             </div>
         </div>
     )
