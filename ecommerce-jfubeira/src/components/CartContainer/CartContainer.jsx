@@ -4,14 +4,14 @@
 import { useCartContext } from "../../context/CartContext"
 
 const CartContainer = () => {
-    const {cartItems, clearCartItems} = useCartContext()
+    const {cartItems, clearCartItems, deleteItem} = useCartContext()
     console.log(cartItems)
     return (
     <div>
         {cartItems.map(prod => <div key={prod.id}>
             <img src={prod.imageUrl} className="w-25" />
             {prod.name} - ${prod.price} - Cantidad: {prod.quantity}
-            <button> X </button>
+            <button onClick={ ()=> deleteItem(prod)}> X </button>
         </div>)}
         <button onClick={clearCartItems}>Limpiar carrito</button>
     </div>

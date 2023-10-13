@@ -40,11 +40,18 @@ export const CartContextProvider = ({children}) => {
         setCartItems([])
     }
 
+    const deleteItem = (existingItem) => {
+        const itemToDelete = cartItems.findIndex((item) => item.id === existingItem.id)
+        cartItems.splice(itemToDelete, 1)
+        setCartItems([...cartItems])
+    }
+
     return (
         <CartContext.Provider value={{
             cartItems,
             addProduct,
-            clearCartItems
+            clearCartItems,
+            deleteItem
         }}>
             {children}
         </CartContext.Provider>
