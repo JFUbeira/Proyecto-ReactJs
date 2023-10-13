@@ -40,11 +40,17 @@ export const CartContextProvider = ({children}) => {
         setCartItems([])
     }
 
-    const deleteItem = (existingItem) => {
-        const itemToDelete = cartItems.findIndex((item) => item.id === existingItem.id)
-        cartItems.splice(itemToDelete, 1)
-        setCartItems([...cartItems])
+    // const deleteItem = (existingItem) => {
+    //     const itemToDelete = cartItems.findIndex((item) => item.id === existingItem.id)
+    //     cartItems.splice(itemToDelete, 1)
+    //     setCartItems([...cartItems])
+    // }
+
+    const deleteItem = (productToDelete) => {
+        const updatedCartItems = cartItems.filter((item) => item.id !== productToDelete.id);
+        setCartItems(updatedCartItems);
     }
+    
 
     return (
         <CartContext.Provider value={{
