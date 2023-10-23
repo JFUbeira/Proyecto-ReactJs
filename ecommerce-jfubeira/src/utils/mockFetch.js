@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const products = [
     {
         id: 1,
@@ -57,7 +58,7 @@ const products = [
 ];
 
 export const mFetch = (pid) =>
-    new Promise((res) => {
+    new Promise((res, rej) => {
         setTimeout(() => {
             res(
                 pid ? products.find((product) => product.id === pid) : products
