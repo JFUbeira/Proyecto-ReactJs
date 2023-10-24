@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { mFetch } from "../../utils/mockFetch";
-
-// TODO: sacar el div de la linea 21 porque no tiene sentido
 
 const ItemDetailContainer = () => {
     let [product, setProduct] = useState({});
@@ -15,11 +13,19 @@ const ItemDetailContainer = () => {
     // aca deberias chequear si ese id existe en 1 db, si no existe mostrar 1 componente de error
 
     useEffect(() => {
-        console.log("2do log");
-        mFetch(Number(pid)) // mFetch(+pid)
-            .then((resp) => setProduct(resp))
-            .catch((err) => console.log(err));
-    }, [pid]);
+        const db = getFirestore();
+        const queryDoc = doc(db, "products", pid);
+        getDoc(queryDoc)
+            .then((resp) => ({ id: resp.id, ...resp.data() }))
+            .then((resp) => setProduct(resp));
+    }, []);
+
+    // useEffect(() => {
+    //     console.log("2do log");
+    //     mFetch(Number(pid)) // mFetch(+pid)
+    //         .then((resp) => setProduct(resp))
+    //         .catch((err) => console.log(err));
+    // }, [pid]);
 
     return (
         <div>
