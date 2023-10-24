@@ -24,6 +24,7 @@ const CartContainer = () => {
             };
         });
         order.total = totalAmount();
+        console.log(order);
     };
 
     return (
@@ -37,7 +38,9 @@ const CartContainer = () => {
             ))}
             <button onClick={clearCartItems}>Limpiar carrito</button>
             <h2>Suma total: ${totalAmount()}</h2>
-            <button>Generar orden de compra</button>
+            <button onClick={generatePurchaseOrder}>
+                Generar orden de compra
+            </button>
         </div>
     );
 };
