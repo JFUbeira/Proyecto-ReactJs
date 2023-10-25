@@ -14,46 +14,6 @@ const ItemListContainer = () => {
     const [loading, setLoading] = useState(true);
     const { cid } = useParams();
 
-    // useEffect(() => {
-    //     if (cid) {
-    //         mFetch()
-    //             .then((resp) =>
-    //                 setProduct(
-    //                     resp.filter((product) => cid === product.category)
-    //                 )
-    //             )
-    //             .catch((err) => console.log(err))
-    //             .finally(() => setLoading(false));
-    //     } else {
-    //         mFetch()
-    //             .then((resp) => setProduct(resp))
-    //             .catch((err) => console.log(err))
-    //             .finally(() => setLoading(false));
-    //     }
-    // }, [cid]);
-
-    // useEffect(() => {
-    //     const db = getFirestore();
-    //     const queryCollection = collection(db, "products");
-    //     const queryFilter = query(
-    //         queryCollection,
-    //         where("category", "==", cid)
-    //     ))
-    //     if (cid) {
-    //         getDocs(queryFilter)
-    //             .then((resp) =>
-    //                 setProduct(
-    //                     resp.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
-    //                 )
-    //             )
-    //         .catch((err) => console.log(err))
-    //         .finally(() => setLoading(false));
-    //     } else {
-    //         .then((resp) => setProduct(resp))
-    //         .catch((err) => console.log(err))
-    //         .finally(() => setLoading(false));
-    // }, [cid];
-
     useEffect(() => {
         const fetchData = async () => {
             const db = getFirestore();
@@ -99,7 +59,7 @@ const ItemListContainer = () => {
         <center>
             <div className="row">
                 {loading ? (
-                    <h2>Espere un momento por favor</h2>
+                    <h2>Espere un momento por favor...</h2>
                 ) : (
                     <ItemList products={products} />
                 )}
@@ -109,3 +69,43 @@ const ItemListContainer = () => {
 };
 
 export default ItemListContainer;
+
+// useEffect(() => {
+//     if (cid) {
+//         mFetch()
+//             .then((resp) =>
+//                 setProduct(
+//                     resp.filter((product) => cid === product.category)
+//                 )
+//             )
+//             .catch((err) => console.log(err))
+//             .finally(() => setLoading(false));
+//     } else {
+//         mFetch()
+//             .then((resp) => setProduct(resp))
+//             .catch((err) => console.log(err))
+//             .finally(() => setLoading(false));
+//     }
+// }, [cid]);
+
+// useEffect(() => {
+//     const db = getFirestore();
+//     const queryCollection = collection(db, "products");
+//     const queryFilter = query(
+//         queryCollection,
+//         where("category", "==", cid)
+//     ))
+//     if (cid) {
+//         getDocs(queryFilter)
+//             .then((resp) =>
+//                 setProduct(
+//                     resp.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
+//                 )
+//             )
+//         .catch((err) => console.log(err))
+//         .finally(() => setLoading(false));
+//     } else {
+//         .then((resp) => setProduct(resp))
+//         .catch((err) => console.log(err))
+//         .finally(() => setLoading(false));
+// }, [cid];
