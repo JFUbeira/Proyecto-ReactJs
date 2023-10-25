@@ -26,9 +26,14 @@ const CartContainer = () => {
     return (
         <div>
             {cartItems.length === 0 ? (
-                <button onClick={() => (window.location.href = "/")}>
-                    Volver al inicio
-                </button>
+                <div>
+                    <h3>
+                        Ups... ¡parece que no tienes nada en el carrito aún!
+                    </h3>
+                    <button onClick={() => (window.location.href = "/")}>
+                        Volver al inicio
+                    </button>
+                </div>
             ) : (
                 <>
                     {cartItems.map((prod) => (
