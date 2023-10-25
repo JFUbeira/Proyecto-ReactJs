@@ -1,12 +1,8 @@
-// import React, { useContext } from 'react'
-// import { CartContext } from '../../context/CartContext'
-
 import { useCartContext } from "../../context/CartContext";
 
 const CartContainer = () => {
     const { cartItems, clearCartItems, deleteItem, totalAmount } =
         useCartContext();
-    console.log(cartItems);
 
     const generatePurchaseOrder = () => {
         const order = {};
@@ -29,18 +25,30 @@ const CartContainer = () => {
 
     return (
         <div>
-            {cartItems.map((prod) => (
-                <div key={prod.id}>
-                    <img src={prod.imageUrl} className="w-25" />
-                    {prod.name} - ${prod.price} - Cantidad: {prod.quantity}
-                    <button onClick={() => deleteItem(prod)}> X </button>
-                </div>
-            ))}
-            <button onClick={clearCartItems}>Limpiar carrito</button>
-            <h2>Suma total: ${totalAmount()}</h2>
-            <button onClick={generatePurchaseOrder}>
-                Generar orden de compra
-            </button>
+            {cartItems.length === 0 ? (
+                <button onClick={() => (window.location.href = "/")}>
+                    Volver al inicio
+                </button>
+            ) : (
+                <>
+                    {cartItems.map((prod) => (
+                        <div key={prod.id}>
+                            <img src={prod.imageUrl} className="w-25" />
+                            {prod.name} - ${prod.price} - Cantidad:{" "}
+                            {prod.quantity}
+                            <button onClick={() => deleteItem(prod)}>
+                                {" "}
+                                X{" "}
+                            </button>
+                        </div>
+                    ))}
+                    <button onClick={clearCartItems}>Limpiar carrito</button>
+                    <h2>Suma total: ${totalAmount()}</h2>
+                    <button onClick={generatePurchaseOrder}>
+                        Generar orden de compra
+                    </button>
+                </>
+            )}
         </div>
     );
 };
