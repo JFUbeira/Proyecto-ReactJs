@@ -1,34 +1,39 @@
-import { useCartContext } from "../../context/CartContext";
+import { useCartContext } from '../../context/CartContext'
+import { addDoc, collection, getFirestore } from 'firebase/firestore'
 
 const CartContainer = () => {
     const { cartItems, clearCartItems, deleteItem, totalAmount } =
-        useCartContext();
+        useCartContext()
 
     const generatePurchaseOrder = () => {
-        const order = {};
+        const order = {}
         order.buyer = {
-            name: "Juan",
-            phone: "1122334455",
-            email: "juan@hotmail.com",
-        };
+            name: 'Juan',
+            phone: '1122334455',
+            email: 'juan@hotmail.com',
+        }
         order.items = cartItems.map((prod) => {
             return {
                 id: prod.id,
                 name: prod.name,
                 price: prod.price,
                 quantity: prod.quantity,
-            };
-        });
-        order.total = totalAmount();
-        console.log(order);
-    };
+            }
+        })
+        order.total = totalAmount()
+        console.log(order)
+
+        const queryDB = getFirestore()
+        const ordersCollection = collection(queryDB, 'orders')
+        addDoc(ordersCollection, order).then((resp) => console.log(resp))
+    }
 
     return (
         <div>
             {cartItems.length === 0 ? (
                 <div>
                     <h3>Ups... ¡parece que no tienes nada en el carrito!</h3>
-                    <button onClick={() => (window.location.href = "/")}>
+                    <button onClick={() => (window.location.href = '/')}>
                         Volver al inicio
                     </button>
                 </div>
@@ -37,11 +42,11 @@ const CartContainer = () => {
                     {cartItems.map((prod) => (
                         <div key={prod.id}>
                             <img src={prod.imageUrl} className="w-25" />
-                            {prod.name} - ${prod.price} - Cantidad:{" "}
+                            {prod.name} - ${prod.price} - Cantidad:{' '}
                             {prod.quantity}
                             <button onClick={() => deleteItem(prod)}>
-                                {" "}
-                                X{" "}
+                                {' '}
+                                X{' '}
                             </button>
                         </div>
                     ))}
@@ -53,7 +58,7 @@ const CartContainer = () => {
                 </>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default CartContainer;
+export default CartContainer
