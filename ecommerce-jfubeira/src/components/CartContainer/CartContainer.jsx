@@ -1,5 +1,11 @@
 import { useCartContext } from '../../context/CartContext'
-import { addDoc, collection, getFirestore } from 'firebase/firestore'
+import {
+    addDoc,
+    collection,
+    doc,
+    getFirestore,
+    updateDoc,
+} from 'firebase/firestore'
 
 const CartContainer = () => {
     const { cartItems, clearCartItems, deleteItem, totalAmount } =
@@ -26,6 +32,17 @@ const CartContainer = () => {
         const queryDB = getFirestore()
         const ordersCollection = collection(queryDB, 'orders')
         addDoc(ordersCollection, order).then((resp) => console.log(resp))
+
+        const updatePromises = cartItems.map((prod) => {
+            const queryUpdateProduct = doc(queryDB, 'products', prod.id)
+            return updateDoc(queryUpdateProduct, {
+                stock: prod.stock - prod.quantity,
+            })
+        })
+
+        Promise.all(updatePromises).then(() => {
+            console.log('Stock actualizado')
+        })
     }
 
     return (
@@ -62,3 +79,35 @@ const CartContainer = () => {
 }
 
 export default CartContainer
+
+// const generatePurchaseOrder = () => {
+//     const order = {}
+//     order.buyer = {
+//         name: 'Juan',
+//         phone: '1122334455',
+//         email: 'juan@hotmail.com',
+//     }
+//     order.items = cartItems.map((prod) => {
+//         return {
+//             id: prod.id,
+//             name: prod.name,
+//             price: prod.price,
+//             quantity: prod.quantity,
+//         }
+//     })
+//     order.total = totalAmount()
+//     console.log(order)
+
+//     const queryDB = getFirestore()
+//     const ordersCollection = collection(queryDB, 'orders')
+//     addDoc(ordersCollection, order).then((resp) => console.log(resp))
+
+//     const queryUpdateProduct = doc(
+//         queryDB,
+//         'products',
+//         '5sAUCSDoo2mHfj3NLlFD'
+//     )
+//     updateDoc(queryUpdateProduct, {
+//         stock: 99,
+//     })
+// }
