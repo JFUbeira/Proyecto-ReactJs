@@ -17,12 +17,13 @@ const CartContainer = () => {
         email: '',
     })
 
-    const generatePurchaseOrder = () => {
+    const generatePurchaseOrder = (event) => {
+        event.preventDefault()
         const order = {}
         order.buyer = {
-            name: 'Juan',
-            phone: '1122334455',
-            email: 'juan@hotmail.com',
+            name: dataForm.name,
+            phone: dataForm.phone,
+            email: dataForm.email,
         }
         order.items = cartItems.map((prod) => {
             return {
@@ -48,6 +49,13 @@ const CartContainer = () => {
 
         Promise.all(updatePromises).then(() => {
             console.log('Stock actualizado')
+        })
+    }
+
+    const handleOnChange = (event) => {
+        setDataForm({
+            ...dataForm,
+            [event.target.name]: event.target.value
         })
     }
 
@@ -78,24 +86,27 @@ const CartContainer = () => {
                     <form onSubmit={generatePurchaseOrder}>
                         <input 
                             type="text" 
-                            name="buyer" 
+                            name="name" 
                             placeholder="Nombre"
                             value={dataForm.name}
+                            onChange={handleOnChange}
                         />
                         <input
                             type="text"
                             name="phone"
                             placeholder="Teléfono"
                             value={dataForm.phone}
+                            onChange={handleOnChange}
                         />
                         <input 
                             type="text" 
                             name="email" 
                             placeholder="Email" 
                             value={dataForm.email}
+                            onChange={handleOnChange}
                         />
+                        <button type="submit">Generar orden de compra</button>
                     </form>
-                    <button>Generar orden de compra</button>
                 </>
             )}
         </div>
