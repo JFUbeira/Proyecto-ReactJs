@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useCartContext } from '../../context/CartContext'
 import {
     addDoc,
@@ -10,6 +11,11 @@ import {
 const CartContainer = () => {
     const { cartItems, clearCartItems, deleteItem, totalAmount } =
         useCartContext()
+    const [dataForm, setDataForm] = useState({
+        name: '',
+        phone: '',
+        email: '',
+    })
 
     const generatePurchaseOrder = () => {
         const order = {}
@@ -69,9 +75,27 @@ const CartContainer = () => {
                     ))}
                     <button onClick={clearCartItems}>Limpiar carrito</button>
                     <h2>Suma total: ${totalAmount()}</h2>
-                    <button onClick={generatePurchaseOrder}>
-                        Generar orden de compra
-                    </button>
+                    <form onSubmit={generatePurchaseOrder}>
+                        <input 
+                            type="text" 
+                            name="buyer" 
+                            placeholder="Nombre"
+                            value={dataForm.name}
+                        />
+                        <input
+                            type="text"
+                            name="phone"
+                            placeholder="Teléfono"
+                            value={dataForm.phone}
+                        />
+                        <input 
+                            type="text" 
+                            name="email" 
+                            placeholder="Email" 
+                            value={dataForm.email}
+                        />
+                    </form>
+                    <button>Generar orden de compra</button>
                 </>
             )}
         </div>
