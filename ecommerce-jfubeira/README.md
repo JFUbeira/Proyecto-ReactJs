@@ -2,6 +2,16 @@
 
 Este proyecto es un ecommerce ficticio desarrollado con React y Vite, con la finalidad de aprender a utilizar ReactJS.
 
+**IMPORTANTE:**
+
+Para cumplir con todos los objetivos requeridos, al proyecto aún le falta lo siguiente:
+
+-   Formulario para obtener los datos del comprador en la orden de compra.
+-   Notificaciones de acciones realizadas con éxito, como agregar productos al carrito y generar una orden de compra.
+-   Archivo de video mostrando la funcionalidad del ecommerce.
+
+Por más que el plazo de entrega haya finalizado, sigo trabajando para terminar de cumplir estos objetivos restantes.
+
 ## Librerías utilizadas
 
 -   **React**: Biblioteca de JavaScript para crear interfaces de usuario interactivas.
