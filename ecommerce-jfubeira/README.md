@@ -6,7 +6,6 @@ Este proyecto es un ecommerce ficticio desarrollado con React y Vite, con la fin
 
 Para cumplir con todos los objetivos requeridos, al proyecto aún le falta lo siguiente:
 
--   Notificaciones de acciones realizadas con éxito, como agregar productos al carrito y generar una orden de compra.
 -   Archivo de video mostrando la funcionalidad del ecommerce.
 
 Por más que el plazo de entrega haya finalizado, sigo trabajando para terminar de cumplir estos objetivos restantes.
