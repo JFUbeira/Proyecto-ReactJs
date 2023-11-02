@@ -1,19 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Navbar from "./components/NavBar/NavBar";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-import CartContainer from "./components/CartContainer/CartContainer";
-import { CartContextProvider } from "./context/CartContext";
-import HomePage from "./components/HomePage/HomePage";
+import Navbar from './components/NavBar/NavBar'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
+import CartContainer from './components/CartContainer/CartContainer'
+import { CartContextProvider } from './context/CartContext'
+import HomePage from './components/HomePage/HomePage'
 
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
     return (
         <BrowserRouter>
-            {/* el provider esta vacio */}
             <CartContextProvider>
                 <Navbar />
                 <Routes>
@@ -30,7 +29,7 @@ function App() {
                 </Routes>
             </CartContextProvider>
         </BrowserRouter>
-    );
+    )
 }
 
-export default App;
+export default App
