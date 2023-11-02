@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 
 export const CartContext = createContext([])
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCartContext = () => useContext(CartContext)
 
 export const CartContextProvider = ({ children }) => {
@@ -55,6 +56,16 @@ export const CartContextProvider = ({ children }) => {
             (item) => item.id !== productToDelete.id
         )
         setCartItems(updatedCartItems)
+        toast.info('Se eliminó el producto del carrito', {
+            position: 'bottom-left',
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark',
+        })
     }
 
     const totalAmount = () =>

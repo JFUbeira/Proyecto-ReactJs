@@ -1,12 +1,7 @@
 import { useState } from 'react'
 import { useCartContext } from '../../context/CartContext'
-import {
-    addDoc,
-    collection,
-    doc,
-    getFirestore,
-    updateDoc,
-} from 'firebase/firestore'
+import { addDoc, collection, doc, getFirestore, updateDoc } from 'firebase/firestore'
+import { toast } from 'react-toastify'
 
 const CartContainer = () => {
     const { cartItems, clearCartItems, deleteItem, totalAmount } =
@@ -50,6 +45,19 @@ const CartContainer = () => {
         Promise.all(updatePromises).then(() => {
             console.log('Stock actualizado')
         })
+
+        toast.success('Se generó la orden de compra correctamente', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+        
+        clearCartItems()
     }
 
     const handleOnChange = (event) => {
@@ -57,6 +65,24 @@ const CartContainer = () => {
             ...dataForm,
             [event.target.name]: event.target.value
         })
+    }
+
+    const cartClearedToast = () => {
+        toast.info('Se vació el carrito de compras', {
+            position: 'bottom-left',
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark',
+        })
+    }
+
+    const handleButtonClick = () => {
+        clearCartItems()
+        cartClearedToast()
     }
 
     return (
@@ -81,7 +107,7 @@ const CartContainer = () => {
                             </button>
                         </div>
                     ))}
-                    <button onClick={clearCartItems}>Limpiar carrito</button>
+                    <button onClick={handleButtonClick}>Limpiar carrito</button>
                     <h2>Suma total: ${totalAmount()}</h2>
                     <form onSubmit={generatePurchaseOrder}>
                         <input 
