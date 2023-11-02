@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 const Item = ({ product }) => {
-    console.log(product);
+    console.log(product)
     return (
-        <div className="card w-25">
+        <div className="card w-25 my-3 mx-0">
             <div className="card-body">
                 <img
                     className="w-100 card-img-top"
@@ -23,7 +23,7 @@ const Item = ({ product }) => {
                 </Link>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Item;
+export default Item

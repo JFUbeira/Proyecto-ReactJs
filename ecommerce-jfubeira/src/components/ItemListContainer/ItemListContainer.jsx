@@ -1,74 +1,74 @@
-import { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import ItemList from '../ItemList/ItemList'
+import { useParams } from 'react-router-dom'
 import {
     collection,
     getDocs,
     getFirestore,
     query,
     where,
-} from "firebase/firestore";
+} from 'firebase/firestore'
 
 const ItemListContainer = () => {
-    const [products, setProduct] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const { cid } = useParams();
+    const [products, setProduct] = useState([])
+    const [loading, setLoading] = useState(true)
+    const { cid } = useParams()
 
     useEffect(() => {
         const fetchData = async () => {
-            const db = getFirestore();
-            const queryCollection = collection(db, "products");
+            const db = getFirestore()
+            const queryCollection = collection(db, 'products')
 
             if (cid) {
                 // Si se proporciona "cid", aplicar filtro.
                 const queryFilter = query(
                     queryCollection,
-                    where("category", "==", cid)
-                );
+                    where('category', '==', cid)
+                )
                 try {
-                    const resp = await getDocs(queryFilter);
+                    const resp = await getDocs(queryFilter)
                     const productsData = resp.docs.map((prod) => ({
                         id: prod.id,
                         ...prod.data(),
-                    }));
-                    setProduct(productsData);
+                    }))
+                    setProduct(productsData)
                 } catch (err) {
-                    console.error("Error al obtener productos:", err);
+                    console.error('Error al obtener productos:', err)
                 }
             } else {
                 // Si no se proporciona "cid", obtener todos los productos.
                 try {
-                    const resp = await getDocs(queryCollection);
+                    const resp = await getDocs(queryCollection)
                     const productsData = resp.docs.map((prod) => ({
                         id: prod.id,
                         ...prod.data(),
-                    }));
-                    setProduct(productsData);
+                    }))
+                    setProduct(productsData)
                 } catch (err) {
-                    console.error("Error al obtener todos los productos:", err);
+                    console.error('Error al obtener todos los productos:', err)
                 }
             }
 
-            setLoading(false);
-        };
+            setLoading(false)
+        }
 
-        fetchData();
-    }, [cid]); // Asegúrate de que cid sea una dependencia para que se dispare el efecto cuando cambie.
+        fetchData()
+    }, [cid]) // Asegúrate de que cid sea una dependencia para que se dispare el efecto cuando cambie.
 
     return (
-        <center>
-            <div className="row">
+        <div className="">
+            <div className="row mx-0">
                 {loading ? (
                     <h2>Espere un momento por favor...</h2>
                 ) : (
                     <ItemList products={products} />
                 )}
             </div>
-        </center>
-    );
-};
+        </div>
+    )
+}
 
-export default ItemListContainer;
+export default ItemListContainer
 
 // useEffect(() => {
 //     if (cid) {
