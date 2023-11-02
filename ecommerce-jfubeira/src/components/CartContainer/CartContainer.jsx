@@ -48,7 +48,7 @@ const CartContainer = () => {
 
         toast.success('Se generó la orden de compra correctamente', {
             position: "bottom-left",
-            autoClose: 5000,
+            autoClose: 10000,
             hideProgressBar: true,
             closeOnClick: false,
             pauseOnHover: true,
@@ -97,41 +97,52 @@ const CartContainer = () => {
             ) : (
                 <>
                     {cartItems.map((prod) => (
-                        <div key={prod.id}>
+                        <div className='pt-5 mt-5' key={prod.id}>
                             <img src={prod.imageUrl} className="w-25" />
                             {prod.name} - ${prod.price} - Cantidad:{' '}
                             {prod.quantity}
-                            <button onClick={() => deleteItem(prod)}>
+                            <button className='mx-3' onClick={() => deleteItem(prod)}>
                                 {' '}
                                 X{' '}
                             </button>
                         </div>
                     ))}
-                    <button onClick={handleButtonClick}>Limpiar carrito</button>
-                    <h2>Suma total: ${totalAmount()}</h2>
+                    <button className='my-4' onClick={handleButtonClick}>Limpiar carrito</button>
+                    <h3 className='mb-3'>Suma total: ${totalAmount()}</h3>
                     <form onSubmit={generatePurchaseOrder}>
-                        <input 
-                            type="text" 
-                            name="name" 
-                            placeholder="Nombre"
-                            value={dataForm.name}
-                            onChange={handleOnChange}
-                        />
-                        <input
-                            type="text"
-                            name="phone"
-                            placeholder="Teléfono"
-                            value={dataForm.phone}
-                            onChange={handleOnChange}
-                        />
-                        <input 
-                            type="text" 
-                            name="email" 
-                            placeholder="Email" 
-                            value={dataForm.email}
-                            onChange={handleOnChange}
-                        />
-                        <button type="submit">Generar orden de compra</button>
+                        <div className='row'>
+                            <div className='col'>
+                                <input 
+                                    type="text" 
+                                    name="name" 
+                                    placeholder="Nombre"
+                                    value={dataForm.name}
+                                    onChange={handleOnChange}
+                                    className='form-control w-200'
+                                />
+                            </div>
+                            <div className='col'>
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    placeholder="Teléfono"
+                                    value={dataForm.phone}
+                                    onChange={handleOnChange}
+                                    className='form-control w-200'
+                                />
+                            </div>
+                            <div className='col'>
+                                <input 
+                                    type="text" 
+                                    name="email" 
+                                    placeholder="Email" 
+                                    value={dataForm.email}
+                                    onChange={handleOnChange}
+                                    className='form-control w-200'
+                                />
+                            </div>
+                        </div>
+                        <button className='mt-4' type="submit">Generar orden de compra</button>
                     </form>
                 </>
             )}
