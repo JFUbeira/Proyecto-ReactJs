@@ -4,11 +4,7 @@ Este proyecto es un ecommerce ficticio desarrollado con React y Vite, con la fin
 
 ## IMPORTANTE:
 
-Para cumplir con todos los objetivos requeridos, al proyecto aún le falta lo siguiente:
-
--   Archivo de video mostrando la funcionalidad del ecommerce.
-
-Por más que el plazo de entrega haya finalizado, sigo trabajando para terminar de cumplir estos objetivos restantes.
+Link del video demostración del funcionamiento del proyecto: https://drive.google.com/file/d/1ATtdWkyUkvQMOhtSzpAs9APROpVxvgyb/view
 
 ## Librerías utilizadas
 
